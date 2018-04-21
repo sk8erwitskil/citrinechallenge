@@ -1,0 +1,9 @@
+FROM python:2.7-slim
+
+RUN pip install flask gunicorn
+
+COPY . /
+
+EXPOSE 8080
+
+ENTRYPOINT ["/usr/local/bin/gunicorn", "--config", "/gunicorn.conf", "app:app"]
